@@ -1,7 +1,6 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-
     "authenticationType": "jwt",
     "baseName": "jhipsterOauth2",
     "blueprints": [],
