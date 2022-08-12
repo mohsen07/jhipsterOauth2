@@ -9,7 +9,6 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { Account } from 'app/core/auth/account.model';
 import { Authority } from 'app/config/authority.constants';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
-import { ApplicationConfigService } from 'app/core/config/application-config.service';
 
 import { AccountService } from './account.service';
 
@@ -28,7 +27,6 @@ function accountWithAuthorities(authorities: string[]): Account {
 
 describe('Account Service', () => {
   let service: AccountService;
-  let applicationConfigService: ApplicationConfigService;
   let httpMock: HttpTestingController;
   let mockStorageService: StateStorageService;
   let mockRouter: Router;
@@ -40,7 +38,6 @@ describe('Account Service', () => {
     });
 
     service = TestBed.inject(AccountService);
-    applicationConfigService = TestBed.inject(ApplicationConfigService);
     httpMock = TestBed.inject(HttpTestingController);
     mockStorageService = TestBed.inject(StateStorageService);
     mockRouter = TestBed.inject(Router);
@@ -49,21 +46,6 @@ describe('Account Service', () => {
 
   afterEach(() => {
     httpMock.verify();
-  });
-
-  describe('save', () => {
-    it('should call account saving endpoint with correct values', () => {
-      // GIVEN
-      const account = accountWithAuthorities([]);
-
-      // WHEN
-      service.save(account).subscribe();
-      const testRequest = httpMock.expectOne({ method: 'POST', url: applicationConfigService.getEndpointFor('api/account') });
-      testRequest.flush({});
-
-      // THEN
-      expect(testRequest.request.body).toEqual(account);
-    });
   });
 
   describe('authenticate', () => {

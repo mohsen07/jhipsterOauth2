@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-    "authenticationType": "jwt",
+    "authenticationType": "oauth2",
     "baseName": "jhipsterOauth2",
     "blueprints": [],
     "buildTool": "maven",
@@ -19,6 +19,7 @@
     "enableHibernateCache": false,
     "enableSwaggerCodegen": false,
     "enableTranslation": false,
+    "entities": [],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.8.1",
@@ -37,7 +38,7 @@
     "serviceDiscoveryType": "no",
     "skipCheckLengthOfIdentifier": false,
     "skipFakeData": false,
-    "skipUserManagement": false,
+    "skipUserManagement": true,
     "testFrameworks": [],
     "websocket": false,
     "withAdminUi": true
